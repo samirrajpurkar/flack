@@ -1,0 +1,47 @@
+{% extends "loggedinlayout.html" %}
+
+{% block title %}
+    Post
+{% endblock %}
+
+{% block body %}
+
+<form id="form-post-message" class="form-inline" 
+        action="/post" 
+        method="post">
+
+    <div class="form-group mb-2">
+      <label for="name" class="sr-only">
+        DISPLAY NAME
+      </label>
+      <input 
+        style="text-align: center" 
+        type="text" 
+        readonly class="form-control-plaintext" name="name" 
+        value="DISPLAY NAME">
+    </div>
+
+    <div class="form-group mx-sm-3 mb-2">
+      <label 
+        for="post" 
+        class="sr-only">
+          post_message
+      </label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="post_post" 
+        name="post" 
+        placeholder="what is in your mind">
+    </div>
+
+    <button type="submit" class="btn btn-primary mb-2">Post</button>
+  </form>
+
+
+  <hr/>
+  <button id='button'>Click</button>
+  
+
+
+{% endblock %}

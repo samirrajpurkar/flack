@@ -1,0 +1,37 @@
+{% extends "loggedinlayout.html" %}
+
+{% block title %}
+    Post
+{% endblock %}
+
+{% block body %}
+
+  <h2 id="message_name">{{name}}</h2>
+  <div class="input-group mb-3">
+    <input
+      id="message_input"
+      type="text" 
+      class="form-control" 
+      placeholder="Your Post" 
+      aria-label="Your Post" 
+      aria-describedby="basic-addon2">
+    <div class="input-group-append">
+      <button
+        id="message_button" 
+        class="btn btn-outline-secondary" 
+        type="button">
+          Post
+      </button>
+    </div>
+  </div>
+
+  
+  
+  <h5>Messages</h5>
+
+  <ul id="messages" class="list-group list-group-flush">
+    
+  </ul>
+
+
+{% endblock %}

@@ -37,7 +37,7 @@ def handle_name():
   # save form data to the database
   """Add name"""
   name = request.form.get("name")
-  return render_template("post.html", name=name)
+  return render_template("message.html", name=name)
 
 @app.route('/post', methods=["POST"])
 def handle_post():
@@ -64,15 +64,12 @@ def handle_post():
 
   return render_template("post.html", name = name, messages = messages)
 
-@socketio.on('new post')
+@socketio.on('newpost')
 def handle_new_post(message):
-  print('-----name from handle_post_event--')
+  print('-----message from newpost emit from client--')
   print(message)
 
-  emit('newpost event',{
-    "name": message["name"],
-    "message": message["post"]
-    }, broadcast=True)  
+  emit('broadcast_post',message, broadcast=True)  
   
 
   

@@ -5,27 +5,5 @@
 {% endblock %}
 
 {% block body %}
-    
-  <form id="form-post-message" class="form-inline" 
-        action="/post_message" 
-        method="post">
-
-    <div class="form-group mb-2">
-      <label for="display_name" class="sr-only">{{messages.display_name}}</label>
-      <input style="text-align: center" type="text" readonly class="form-control-plaintext" id="display_name" name="display_name" value={{messages.display_name}}>
-    </div>
-
-    <div class="form-group mx-sm-3 mb-2">
-      <label for="post_message" class="sr-only">post_message</label>
-      <input type="text" class="form-control" id="post_message" name="post_message" placeholder="what is in your mind">
-    </div>
-
-    <button type="submit" class="btn btn-primary mb-2">Post</button>
-  </form>
-
-
-  <hr/>
-  
-
-
+    {{message}}
 {% endblock %}

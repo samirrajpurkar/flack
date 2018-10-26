@@ -6,19 +6,21 @@
 
 {% block body %}
 
-<form id="form-post-message" class="form-inline" 
+<form id="form-post" class="form-inline" 
         action="/post" 
         method="post">
 
     <div class="form-group mb-2">
       <label for="name" class="sr-only">
-        DISPLAY NAME
+        name
       </label>
       <input 
+        id="form-name"
         style="text-align: center" 
         type="text" 
-        readonly class="form-control-plaintext" name="name" 
-        value="DISPLAY NAME">
+        readonly class="form-control-plaintext" 
+        name="name" 
+        value={{name}}>
     </div>
 
     <div class="form-group mx-sm-3 mb-2">
@@ -30,18 +32,16 @@
       <input 
         type="text" 
         class="form-control" 
-        id="post_post" 
+        id="form_post" 
         name="post" 
-        placeholder="what is in your mind">
+        placeholder="what is in your mind"
+        value="haaa">
     </div>
 
     <button type="submit" class="btn btn-primary mb-2">Post</button>
   </form>
 
+  <div id="yes"></div>
 
-  <hr/>
-  <button id='button'>Click</button>
   
-
-
 {% endblock %}

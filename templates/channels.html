@@ -1,0 +1,26 @@
+{% extends "loggedinlayout.html" %}
+
+{% block title %}
+    Channels
+{% endblock %}
+
+{% block body %}
+    
+    <h6>CHANNELS</h6>
+    {{message}}
+
+    <!-- Two Unequal Columns -->
+    <div class="row">
+      <div class="col-4">
+        <nav id="channels_a" class="nav flex-column">
+          <a class="nav-link" href="#" data-channel="first">First</a>
+          <a class="nav-link" href="#" data-channel="second">Second</a>
+          <a class="nav-link" href="#" data-channel="third">Third</a>
+        </nav>
+      </div>
+      
+      <div class="col-8">chat messages...</div>
+    
+    </div>
+
+{% endblock %}

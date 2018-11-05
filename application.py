@@ -32,6 +32,10 @@ socketio = SocketIO(app)
 def index():
     return render_template("index.html")
 
+@app.route("/channels")
+def channels():
+  return render_template("channels.html")
+
 @app.route('/name', methods=['POST'])
 def handle_name():
   # save form data to the database

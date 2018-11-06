@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Set links for list of channels
   document.querySelectorAll('#channels_a .nav-link').forEach(link => {
     link.onclick = () => {
-      console.log(link.dataset.channel);
       load_channel(link.dataset.channel);
       return false;
     }

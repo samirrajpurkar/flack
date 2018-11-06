@@ -6,12 +6,11 @@
 
 {% block body %}
     
-    <h6>CHANNELS</h6>
-    {{message}}
+    <div class="row">{{message}}</div>
 
     <!-- Two Unequal Columns -->
     <div class="row">
-      <div class="col-4">
+      <div class="col-2"> CHANNEL LIST
         <nav id="channels_a" class="nav flex-column">
           <a class="nav-link" href="#" data-channel="first">First</a>
           <a class="nav-link" href="#" data-channel="second">Second</a>
@@ -19,7 +18,10 @@
         </nav>
       </div>
       
-      <div class="col-8">chat messages...</div>
+      <div class="col-10">CHAT VIEW
+        <div id="channel_view">
+        </div>
+      </div>
     
     </div>
 

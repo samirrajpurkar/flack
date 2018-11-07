@@ -5,7 +5,7 @@ from flask import Flask, render_template, request, jsonify, redirect
 from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
-from flask_socketio import SocketIO, emit
+from flask_socketio import SocketIO, emit, join_room, leave_room, send
 
 app = Flask(__name__)
 
@@ -47,16 +47,18 @@ channel_views = [
   ],
 ];
 
+names=[]
+
 
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+  return render_template("index.html")
 
 @app.route("/channels")
 def channels():
   return render_template("channels.html")
-
+  
 @app.route("/first")
 def first():
     return jsonify(channel_views[0])
@@ -74,6 +76,8 @@ def handle_name():
   # save form data to the database
   """Add name"""
   name = request.form.get("name")
+  names.append(name)
+  print('names : ', names)
   return render_template("message.html", name=name)
 
 @app.route('/post', methods=["POST"])
@@ -100,6 +104,43 @@ def handle_post():
 
 
   return render_template("post.html", name = name, messages = messages)
+
+@socketio.on('first')
+def on_join(data_json):
+  print('received json: ' + str(data_json))
+  username = data_json["username"]
+  room = data_json["room"]
+  post = data_json["post"]
+  channel_views[0].append(post)
+  print('channel_views[0] : ', channel_views[0])
+  join_room(room)
+  emit(room, data_json["post"], room = room)
+  return 'first success'
+
+@socketio.on('second')
+def on_join(data_json):
+  print('received json: ' + str(data_json))
+  username = data_json["username"]
+  room = data_json["room"]
+  post = data_json["post"]
+  channel_views[1].append(post)
+  print('channel_views[1] : ', channel_views[1])
+  join_room(room)
+  emit(room, data_json["post"], room = room)
+  return 'second success'
+
+@socketio.on('third')
+def on_join(data_json):
+  print('received json: ' + str(data_json))
+  username = data_json["username"]
+  room = data_json["room"]
+  post = data_json["post"]
+  channel_views[2].append(post)
+  print('channel_views[2] : ', channel_views[2])
+  join_room(room)
+  emit(room, data_json["post"], room = room)
+  return 'third success'
+
 
 @socketio.on('newpost')
 def handle_new_post(message):
